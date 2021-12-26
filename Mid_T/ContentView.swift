@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct ContentView: View {
     
@@ -24,7 +23,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 Spacer()
-                Text("LAUNCHES")
+                Text(launchVM.launchesInfo)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(Font.title)
                     .padding()
@@ -36,18 +35,7 @@ struct ContentView: View {
             
             .toolbar {
                 Button("Filter") {
-                    
-                    var store = Set<AnyCancellable>()
-                    companyVM.fetchCompanyDataCombine().sink { (company) in
-                        
-                        
-                    }
-                    .store(in: &store)
-                    
-                    
-                    companyVM.fetchCompanyData()
-                    launchVM.fetchLaunches()
-                    print("Help tapped!")
+                    // TODO: Open Filter
                 }
             }
         }.navigationViewStyle(StackNavigationViewStyle())
