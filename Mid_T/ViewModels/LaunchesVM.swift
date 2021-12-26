@@ -18,7 +18,6 @@ class LaunchesVM: ObservableObject {
             DispatchQueue.main.async {
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                
                 self.launches = try! jsonDecoder.decode([Launch].self, from: data!)
             }
         }.resume()
