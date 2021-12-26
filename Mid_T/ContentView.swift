@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Combine
 
 struct ContentView: View {
     
@@ -29,13 +29,22 @@ struct ContentView: View {
                     .font(Font.title)
                     .padding()
                 List(launchVM.launches) { launch in
-                    LaunchCell(launch: launch)
+                    LaunchCell(viewModel: LaunchVM(launch: launch))
                 }
             }
             .navigationTitle("SpaceX")
             
             .toolbar {
                 Button("Filter") {
+                    
+                    var store = Set<AnyCancellable>()
+                    companyVM.fetchCompanyDataCombine().sink { (company) in
+                        
+                        
+                    }
+                    .store(in: &store)
+                    
+                    
                     companyVM.fetchCompanyData()
                     launchVM.fetchLaunches()
                     print("Help tapped!")
@@ -43,13 +52,7 @@ struct ContentView: View {
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
-    
 }
-
-
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

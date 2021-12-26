@@ -6,10 +6,29 @@
 //
 
 import Foundation
+import Combine
 
 class CompanyVM: ObservableObject {
     
+    private var cancellable: AnyCancellable?
+
+
     @Published var companyInfo = "Loading company info..."
+    
+    
+    
+    let url = URL(string: "https://api.spacexdata.com/v3/info")!
+    func fetchCompanyDataCombine() -> AnyPublisher<Company, Never> {
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .decode(type: Company.self, decoder: jsonDecoder)
+            .replaceError(with: Company(name: "", founder: "", founded: 0, employees: 0, launchSites: 0, valuation: 0))
+            .eraseToAnyPublisher()
+    }
+    
     
     func fetchCompanyData() {
         let apiUrl = "https://api.spacexdata.com/v3/info"
