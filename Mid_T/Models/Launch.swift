@@ -14,6 +14,11 @@ struct Launch: Decodable, Identifiable {
     let launchDateUtc: String
     let launchDateLocal: String
     let rocket: LaunchRocket
+    let links: Links
+}
+
+struct Links: Decodable {
+    let missionPatchSmall: String?
 }
 
 struct LaunchRocket: Decodable {

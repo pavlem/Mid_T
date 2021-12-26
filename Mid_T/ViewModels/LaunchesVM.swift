@@ -13,24 +13,32 @@ class LaunchesVM: ObservableObject {
     @Published var launchesInfo = LaunchesVM.launchesLoading
     @Published var launches = [Launch]()
     
-    init() {
-        fetchLaunches(fromUrl: apiUrl)
-    }
-    
     static var launchesLoading = "LAUNCHES - Loading..."
     static var launchesLoadingDone = "LAUNCHES"
-    private let apiUrl = "https://api.spacexdata.com/v3/launches"
     
-    private func fetchLaunches(fromUrl: String) {
-        guard let url = URL(string: apiUrl) else { return }
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            DispatchQueue.main.async {
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                self.launches = try! jsonDecoder.decode([Launch].self, from: data!)
-                self.launchesInfo = LaunchesVM.launchesLoadingDone
+    // MARK: - Inits
+    init() {
+        dataTask = companyService.fetchLaunches { result in
+            switch result {
+            case .success(let launches):
+                if let launches = launches {
+                    DispatchQueue.main.async {
+                        self.launches = launches
+                        self.launchesInfo = LaunchesVM.launchesLoadingDone
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                // handle error
             }
-        }.resume()
+        }
     }
-
+    
+    deinit {
+        dataTask?.cancel()
+    }
+    
+    // MARK: - Properties
+    private var dataTask: URLSessionDataTask?
+    private let companyService = SpacexService()
 }

@@ -10,25 +10,35 @@ import SwiftUI
 
 class CompanyVM: ObservableObject {
     
+    // MARK: - API
     @Published var companyInfo = "Loading company info..."
     
+    // MARK: - Inits
     init() {
-        fetchCompanyData()
-    }
-    
-    func fetchCompanyData() {
-        let apiUrl = "https://api.spacexdata.com/v3/info"
-        guard let url = URL(string: apiUrl) else { return }
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            DispatchQueue.main.async {
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                let company = try! jsonDecoder.decode(Company.self, from: data!)
-                self.companyInfo = self.getCompanyInfo(fromCompany: company)
+        dataTask = companyService.fetchCopmanyInfo { result in
+            switch result {
+            case .success(let company):
+                if let company = company {
+                    DispatchQueue.main.async {
+                        self.companyInfo = self.getCompanyInfo(fromCompany: company)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+                // handle error
             }
-        }.resume()
+        }
     }
     
+    deinit {
+        dataTask?.cancel()
+    }
+    
+    // MARK: - Properties
+    private var dataTask: URLSessionDataTask?
+    private let companyService = SpacexService()
+    
+    // MARK: - Helper
     func getCompanyInfo(fromCompany company: Company) -> String {
         return "\(company.name) was founded by \(company.name) in \(company.founded). It has now \(company.employees) employees, \(company.launchSites) launch sites, and is valued at  \(self.getFormatedNumber(fromNumber: company.valuation)) USD."
     }
