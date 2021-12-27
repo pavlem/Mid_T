@@ -11,7 +11,7 @@ struct LaunchVM {
     
     let launch: Launch
     
-    var missionImagePatch: String {
+    var missionImagePatchUrl: String {
         return launch.links.missionPatchSmall ?? ""
     }
     

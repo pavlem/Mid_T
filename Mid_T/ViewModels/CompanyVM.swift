@@ -11,7 +11,11 @@ import SwiftUI
 class CompanyVM: ObservableObject {
     
     // MARK: - API
+    @Published var companyInfoTitle = CompanyVM.companyLoading
     @Published var companyInfo = "Loading company info..."
+    
+    static var companyLoading = "COMPANY - Loading..."
+    static var companyLoadingDone = "COMPANY"
     
     // MARK: - Inits
     init() {
@@ -21,6 +25,7 @@ class CompanyVM: ObservableObject {
                 if let company = company {
                     DispatchQueue.main.async {
                         self.companyInfo = self.getCompanyInfo(fromCompany: company)
+                        self.companyInfoTitle = CompanyVM.companyLoadingDone
                     }
                 }
             case .failure(let error):

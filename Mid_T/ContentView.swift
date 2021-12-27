@@ -15,15 +15,16 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack() {
-                Text("COMPANY")
+                Text(companyVM.companyInfoTitle)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(Font.title)
                     .padding()
                 Text(companyVM.companyInfo)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
+                    .font(.body)
                 Spacer()
-                Text(launchVM.launchesInfo)
+                Text(launchVM.launchesInfoTitle)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(Font.title)
                     .padding()
@@ -39,11 +40,5 @@ struct ContentView: View {
                 }
             }
         }.navigationViewStyle(StackNavigationViewStyle())
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

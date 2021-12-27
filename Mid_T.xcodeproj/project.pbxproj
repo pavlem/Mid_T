@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B3F3FE0277A13DA00747266 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F3FDF277A13DA00747266 /* CachedAsyncImage.swift */; };
 		2B3FEA1227791AFC008FEDA1 /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA1127791AFC008FEDA1 /* LaunchDetail.swift */; };
 		2B3FEA1527792553008FEDA1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA1427792553008FEDA1 /* NetworkService.swift */; };
 		2B3FEA17277926AE008FEDA1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA16277926AE008FEDA1 /* NetworkError.swift */; };
 		2B3FEA19277926CA008FEDA1 /* SpacexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA18277926CA008FEDA1 /* SpacexService.swift */; };
 		2B3FEA1B27792FCF008FEDA1 /* LaunchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA1A27792FCF008FEDA1 /* LaunchVM.swift */; };
-		2B3FEA1D2779305C008FEDA1 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA1C2779305C008FEDA1 /* ImageHelper.swift */; };
 		2BAC45C62774E9C60004C2B9 /* Mid_TApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC45C52774E9C60004C2B9 /* Mid_TApp.swift */; };
 		2BAC45C82774E9C60004C2B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC45C72774E9C60004C2B9 /* ContentView.swift */; };
 		2BAC45CA2774E9C80004C2B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC45C92774E9C80004C2B9 /* Assets.xcassets */; };
@@ -45,12 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B3F3FDF277A13DA00747266 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		2B3FEA1127791AFC008FEDA1 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
 		2B3FEA1427792553008FEDA1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2B3FEA16277926AE008FEDA1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2B3FEA18277926CA008FEDA1 /* SpacexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacexService.swift; sourceTree = "<group>"; };
 		2B3FEA1A27792FCF008FEDA1 /* LaunchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVM.swift; sourceTree = "<group>"; };
-		2B3FEA1C2779305C008FEDA1 /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		2BAC45C22774E9C60004C2B9 /* Mid_T.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mid_T.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAC45C52774E9C60004C2B9 /* Mid_TApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mid_TApp.swift; sourceTree = "<group>"; };
 		2BAC45C72774E9C60004C2B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B3F3FDE277A13C700747266 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				2B3F3FDF277A13DA00747266 /* CachedAsyncImage.swift */,
+				2B3FEA1327792535008FEDA1 /* Networking */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		2B3F3FE1277A156C00747266 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2BAC45C92774E9C80004C2B9 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		2B3FEA1327792535008FEDA1 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,11 +146,10 @@
 				2BAC45EF2774EAB10004C2B9 /* Models */,
 				2BAC45F22774EC700004C2B9 /* Views */,
 				2BAC45F727751FFF0004C2B9 /* ViewModels */,
+				2B3F3FDE277A13C700747266 /* Libs */,
+				2B3F3FE1277A156C00747266 /* Resources */,
 				2BAC45C52774E9C60004C2B9 /* Mid_TApp.swift */,
 				2BAC45C72774E9C60004C2B9 /* ContentView.swift */,
-				2B3FEA1C2779305C008FEDA1 /* ImageHelper.swift */,
-				2B3FEA1327792535008FEDA1 /* Networking */,
-				2BAC45C92774E9C80004C2B9 /* Assets.xcassets */,
 				2BAC45CB2774E9C80004C2B9 /* Preview Content */,
 			);
 			path = Mid_T;
@@ -186,8 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				2BAC45F8277520180004C2B9 /* CompanyVM.swift */,
-				2B3FEA1A27792FCF008FEDA1 /* LaunchVM.swift */,
 				2BAC45FA277520490004C2B9 /* LaunchesVM.swift */,
+				2B3FEA1A27792FCF008FEDA1 /* LaunchVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -330,10 +346,10 @@
 				2B3FEA1527792553008FEDA1 /* NetworkService.swift in Sources */,
 				2BAC45F627751FF60004C2B9 /* Company.swift in Sources */,
 				2BAC45F9277520180004C2B9 /* CompanyVM.swift in Sources */,
-				2B3FEA1D2779305C008FEDA1 /* ImageHelper.swift in Sources */,
 				2BAC45C62774E9C60004C2B9 /* Mid_TApp.swift in Sources */,
 				2BAC45FB277520490004C2B9 /* LaunchesVM.swift in Sources */,
 				2B3FEA17277926AE008FEDA1 /* NetworkError.swift in Sources */,
+				2B3F3FE0277A13DA00747266 /* CachedAsyncImage.swift in Sources */,
 				2B3FEA1B27792FCF008FEDA1 /* LaunchVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

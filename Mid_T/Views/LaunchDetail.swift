@@ -7,8 +7,20 @@
 
 import SwiftUI
 
+struct LaunchDetailVM {
+    let missionInfo: String
+}
+
+extension LaunchDetailVM {
+    init(launchVM: LaunchVM) {
+        self.missionInfo = launchVM.missionInfo
+    }
+}
+
 struct LaunchDetail: View {
-    private (set) var viewModel: LaunchVM
+    
+    
+    private (set) var viewModel: LaunchDetailVM
     
     var body: some View {
         Text(viewModel.missionInfo)

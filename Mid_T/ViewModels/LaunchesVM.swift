@@ -10,7 +10,7 @@ import Foundation
 class LaunchesVM: ObservableObject {
     
     // MARK: - API
-    @Published var launchesInfo = LaunchesVM.launchesLoading
+    @Published var launchesInfoTitle = LaunchesVM.launchesLoading
     @Published var launches = [Launch]()
     
     static var launchesLoading = "LAUNCHES - Loading..."
@@ -24,7 +24,7 @@ class LaunchesVM: ObservableObject {
                 if let launches = launches {
                     DispatchQueue.main.async {
                         self.launches = launches
-                        self.launchesInfo = LaunchesVM.launchesLoadingDone
+                        self.launchesInfoTitle = LaunchesVM.launchesLoadingDone
                     }
                 }
             case .failure(let error):

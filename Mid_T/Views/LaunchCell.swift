@@ -13,9 +13,9 @@ struct LaunchCell: View {
     
     var body: some View {
         
-        return NavigationLink(destination: LaunchDetail(viewModel: viewModel)) {
+        return NavigationLink(destination: LaunchDetail(viewModel: LaunchDetailVM(launchVM: viewModel))) {
             HStack {
-                AsyncImage(url: URL(string: viewModel.missionImagePatch))
+                CachedAsyncImage(url: URL(string: viewModel.missionImagePatchUrl))
                     .frame(width: 80, height: 80)
                     .cornerRadius(40)
                 VStack(alignment: .leading, spacing: 10, content: {
@@ -44,3 +44,7 @@ struct LaunchCellInfoView: View {
         }
     }
 }
+
+
+
+
