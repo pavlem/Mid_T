@@ -15,6 +15,9 @@ struct Launch: Decodable, Identifiable {
     let launchDateLocal: String
     let rocket: LaunchRocket
     let links: Links
+    let launchSuccess: Bool?
+    let launchFailureDetails: LaunchFailureDetails?
+    let details: String?
 }
 
 struct Links: Decodable {
@@ -24,4 +27,8 @@ struct Links: Decodable {
 struct LaunchRocket: Decodable {
     let rocketName: String
     let rocketType: String
+}
+
+struct LaunchFailureDetails: Decodable {
+    let reason: String
 }

@@ -11,21 +11,25 @@ struct LaunchCell: View {
     
     private (set) var viewModel: LaunchVM
     
+    private let imageFrameWidth = CGFloat(50)
+    private let imageFrameHeight = CGFloat(50)
+    private let spacing = CGFloat(8)
+    
     var body: some View {
         
         return NavigationLink(destination: LaunchDetail(viewModel: LaunchDetailVM(launchVM: viewModel))) {
             HStack {
                 CachedAsyncImage(url: URL(string: viewModel.missionImagePatchUrl))
-                    .frame(width: 80, height: 80)
-                    .cornerRadius(40)
-                VStack(alignment: .leading, spacing: 10, content: {
+                    .frame(width: imageFrameWidth, height: imageFrameWidth)
+                    .cornerRadius(imageFrameWidth / 2)
+                VStack(alignment: .leading, spacing: spacing, content: {
                     LaunchCellInfoView(descriptionTuple: (viewModel.missionNameLabel, viewModel.missionInfo))
                     LaunchCellInfoView(descriptionTuple: (viewModel.dateTimeLabel, viewModel.dateTimeInfo))
                     LaunchCellInfoView(descriptionTuple: (viewModel.rocketLabel, viewModel.rocketInfo))
                     LaunchCellInfoView(descriptionTuple: (viewModel.daysLabel, viewModel.daysInfo))
                 })
                 Spacer()
-                Image("c_mark")
+                Image(viewModel.imageSuccessIconName)
             }
         }
     }
@@ -44,7 +48,3 @@ struct LaunchCellInfoView: View {
         }
     }
 }
-
-
-
-

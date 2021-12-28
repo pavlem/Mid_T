@@ -18,7 +18,7 @@ class LaunchesVM: ObservableObject {
     
     // MARK: - Inits
     init() {
-        dataTask = companyService.fetchLaunches { result in
+        dataTask = networkService.fetchLaunches { result in
             switch result {
             case .success(let launches):
                 if let launches = launches {
@@ -40,5 +40,5 @@ class LaunchesVM: ObservableObject {
     
     // MARK: - Properties
     private var dataTask: URLSessionDataTask?
-    private let companyService = SpacexService()
+    private let networkService = SpacexService()
 }

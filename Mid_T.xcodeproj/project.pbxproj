@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2B3F3FE0277A13DA00747266 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F3FDF277A13DA00747266 /* CachedAsyncImage.swift */; };
-		2B3FEA1227791AFC008FEDA1 /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA1127791AFC008FEDA1 /* LaunchDetail.swift */; };
+		2B3F3FE3277B0E0900747266 /* LaunchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F3FE2277B0E0900747266 /* LaunchDetail.swift */; };
+		2B3F3FE5277B13AC00747266 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F3FE4277B13AC00747266 /* String+Extension.swift */; };
+		2B3F3FE7277B182500747266 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3F3FE6277B182500747266 /* Date+Extension.swift */; };
+		2B3FEA1227791AFC008FEDA1 /* LaunchDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA1127791AFC008FEDA1 /* LaunchDetailVM.swift */; };
 		2B3FEA1527792553008FEDA1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA1427792553008FEDA1 /* NetworkService.swift */; };
 		2B3FEA17277926AE008FEDA1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA16277926AE008FEDA1 /* NetworkError.swift */; };
 		2B3FEA19277926CA008FEDA1 /* SpacexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3FEA18277926CA008FEDA1 /* SpacexService.swift */; };
@@ -46,7 +49,10 @@
 
 /* Begin PBXFileReference section */
 		2B3F3FDF277A13DA00747266 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
-		2B3FEA1127791AFC008FEDA1 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
+		2B3F3FE2277B0E0900747266 /* LaunchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetail.swift; sourceTree = "<group>"; };
+		2B3F3FE4277B13AC00747266 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		2B3F3FE6277B182500747266 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		2B3FEA1127791AFC008FEDA1 /* LaunchDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailVM.swift; sourceTree = "<group>"; };
 		2B3FEA1427792553008FEDA1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2B3FEA16277926AE008FEDA1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2B3FEA18277926CA008FEDA1 /* SpacexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacexService.swift; sourceTree = "<group>"; };
@@ -96,8 +102,10 @@
 		2B3F3FDE277A13C700747266 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				2B3F3FDF277A13DA00747266 /* CachedAsyncImage.swift */,
 				2B3FEA1327792535008FEDA1 /* Networking */,
+				2B3F3FDF277A13DA00747266 /* CachedAsyncImage.swift */,
+				2B3F3FE4277B13AC00747266 /* String+Extension.swift */,
+				2B3F3FE6277B182500747266 /* Date+Extension.swift */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -193,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				2BAC45F32774ECA50004C2B9 /* LaunchCell.swift */,
-				2B3FEA1127791AFC008FEDA1 /* LaunchDetail.swift */,
+				2B3F3FE2277B0E0900747266 /* LaunchDetail.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,9 +209,10 @@
 		2BAC45F727751FFF0004C2B9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2B3FEA1A27792FCF008FEDA1 /* LaunchVM.swift */,
+				2B3FEA1127791AFC008FEDA1 /* LaunchDetailVM.swift */,
 				2BAC45F8277520180004C2B9 /* CompanyVM.swift */,
 				2BAC45FA277520490004C2B9 /* LaunchesVM.swift */,
-				2B3FEA1A27792FCF008FEDA1 /* LaunchVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -341,15 +350,18 @@
 				2BAC45C82774E9C60004C2B9 /* ContentView.swift in Sources */,
 				2BAC45F12774EAD40004C2B9 /* Launch.swift in Sources */,
 				2BAC45F42774ECA50004C2B9 /* LaunchCell.swift in Sources */,
-				2B3FEA1227791AFC008FEDA1 /* LaunchDetail.swift in Sources */,
+				2B3FEA1227791AFC008FEDA1 /* LaunchDetailVM.swift in Sources */,
 				2B3FEA19277926CA008FEDA1 /* SpacexService.swift in Sources */,
+				2B3F3FE7277B182500747266 /* Date+Extension.swift in Sources */,
 				2B3FEA1527792553008FEDA1 /* NetworkService.swift in Sources */,
 				2BAC45F627751FF60004C2B9 /* Company.swift in Sources */,
 				2BAC45F9277520180004C2B9 /* CompanyVM.swift in Sources */,
 				2BAC45C62774E9C60004C2B9 /* Mid_TApp.swift in Sources */,
 				2BAC45FB277520490004C2B9 /* LaunchesVM.swift in Sources */,
 				2B3FEA17277926AE008FEDA1 /* NetworkError.swift in Sources */,
+				2B3F3FE3277B0E0900747266 /* LaunchDetail.swift in Sources */,
 				2B3F3FE0277A13DA00747266 /* CachedAsyncImage.swift in Sources */,
+				2B3F3FE5277B13AC00747266 /* String+Extension.swift in Sources */,
 				2B3FEA1B27792FCF008FEDA1 /* LaunchVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

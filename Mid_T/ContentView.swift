@@ -29,6 +29,7 @@ struct ContentView: View {
                     .font(Font.title)
                     .padding()
                 List(launchVM.launches) { launch in
+//                    let _ = print(launch)
                     LaunchCell(viewModel: LaunchVM(launch: launch))
                 }
             }
