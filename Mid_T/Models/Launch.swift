@@ -8,7 +8,7 @@
 import Foundation
 
 struct Launch: Decodable, Identifiable {
-    let id = UUID()
+    var id = UUID()
     let missionName: String
     let launchDateUnix: Int
     let launchDateUtc: String
@@ -19,6 +19,11 @@ struct Launch: Decodable, Identifiable {
     let launchFailureDetails: LaunchFailureDetails?
     let details: String?
     let launchYear: String
+    
+    private enum CodingKeys: CodingKey {
+        case missionName, launchDateUnix, launchDateUtc, launchDateLocal, rocket, links, launchSuccess, launchFailureDetails, details, launchYear
+    }
+
 }
 
 struct Links: Decodable {

@@ -11,7 +11,7 @@ import SwiftUI
 struct Mid_TApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LaunchesMainView()
         }
     }
 }

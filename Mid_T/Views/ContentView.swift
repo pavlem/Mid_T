@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LaunchesMainView: View {
     
     @State private var showModal: Bool = false
     @ObservedObject var companyVM = CompanyVM()
@@ -25,8 +25,8 @@ struct ContentView: View {
                     .padding()
                 Text(companyVM.companyInfo)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
                     .font(.body)
+                    .padding()
                 Spacer()
                 Text(launchesVM.launchesInfoTitle)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -41,12 +41,6 @@ struct ContentView: View {
                 Button(filterTitle) {
                     self.showModal = true
                 }.sheet(isPresented: self.$showModal) {
-                    
-                    
-
-                    print("sssssssss") // TODO: - Remove this
-                    
-                    
                 } content: {
                     FilterView(launchesVM: launchesVM)
                 }
@@ -64,41 +58,50 @@ struct FilterView: View {
     @State var selectedSuccessCase = "All"
     @State var selectedOrderCase = "ASC"
     
+    private let filterTitle = "Choose Filter Options"
+    private let launchOutcome = "Choose a launch outcome"
+    private let orederingByYear = "Select ordering by year"
+    private let successfulState = "Success"
+    private let failureStateText = "Failure"
+
     var body: some View {
         
         VStack {
+            Text(filterTitle)
+                .font(.title)
+                .padding()
             YearPickerView(selectedYear: $selectedYear, years: [selectedYear] + launchesVM.launchesByYear)
+            HStack {
+                Text(launchOutcome)
+                Spacer()
+            }
+            .padding()
             LaunchSuccessView(selectedSuccessCase: $selectedSuccessCase)
+            HStack {
+                Text(orederingByYear)
+                Spacer()
+            }
+            .padding()
             LaunchOrderView(selectedOrderCase: $selectedOrderCase)
             Spacer()
             VStack {
-                
                 Button {
-                    
-                    
-//                    if let firstYear = launchesVM.launchesByYear.first {
-//                        if Int(selectedYear) == nil {
-//                            selectedYear = firstYear
-//                        }
-//                    }
-                    
-                    
                     launchesVM.resetFilters()
-                    launchesVM.filter(filterObject: LaunchesFilterObject(year: selectedYear, order: selectedOrderCase, successfulState: selectedSuccessCase))
+                    
+                    let filter = LaunchesFilterObject(
+                        year: selectedYear,
+                        order: selectedOrderCase,
+                        successfulState: selectedSuccessCase,
+                        successfulStateText: successfulState,
+                        failureStateText: failureStateText
+                    )
+                    
+                    launchesVM.filter(filterObject: filter)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text(LaunchesVM.applyFiltersText)
                 }
                 Button {
-                    if let firstYear = launchesVM.launchesByYear.first {
-                        selectedYear = firstYear
-                    }
-                    
-                    print(selectedYear)
-                    print(selectedSuccessCase)
-                    print(selectedOrderCase)
-
-
                     launchesVM.resetFilters()
                     presentationMode.wrappedValue.dismiss()
                 } label: {
@@ -108,28 +111,6 @@ struct FilterView: View {
         }
     }
 }
-
-
-//struct A : View {
-//  @State var myBindableVar = ""
-//  var body : some View {
-//    VStack {
-//     Text(myBindableVar)
-//    Spacer()
-//    B(myBindableVar: $myBindableVar)
-//    }
-//  }
-//}
-//
-//struct B : View {
-//  @Binding var myBindableVar : String
-//  var body : some View {
-//    Button(action: { self.myBindableVar = "Text appears" }) {
-//        Text("Press to change")
-//    }
-//  }
-//}
-
 
 struct YearPickerView: View {
 
@@ -145,7 +126,11 @@ struct YearPickerView: View {
         HStack {
             Text(selectAYearText)
             Spacer()
-            Picker(chooseAYearText, selection: $selectedYear) { ForEach(years, id: \.self) { Text($0) } }
+            Picker(chooseAYearText, selection: $selectedYear) {
+                ForEach(years, id: \.self) {
+                    Text($0)
+                }
+            }
         }
         .padding()
     }
@@ -157,7 +142,7 @@ struct LaunchSuccessView: View {
     @Binding var selectedSuccessCase: String
     
     // MARK: - Properties
-    private let order = ["All", "Success only", "Failure only"]
+    private let order = ["All", "Success", "Failure"]
     private let pickerText = "Please choose a year"
     
     var body: some View {

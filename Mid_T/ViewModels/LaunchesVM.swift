@@ -12,11 +12,13 @@ struct LaunchesFilterObject {
     let year: String
     let order: String
     let successfulState: String
-    
+    let successfulStateText: String
+    let failureStateText: String
+
     var isSusccessfulLaunch: Bool? {
-        if successfulState == "Success only" {
+        if successfulState == successfulStateText {
             return true
-        } else if successfulState == "Failure only" {
+        } else if successfulState == failureStateText {
             return false
         }
         return nil
