@@ -73,10 +73,12 @@ struct FilterView: View {
             Spacer()
             VStack {
                 Button {
-                    
-//                    if let firstYear = launchesVM.launchesByYear.first {
-//                        selectedYear = firstYear
-//                    }
+                                        
+                    if let firstYear = launchesVM.launchesByYear.first {
+                        if Int(selectedYear) == nil {
+                            selectedYear = firstYear
+                        }
+                    }
                     
                     launchesVM.filter(filterObject: LaunchesFilterObject(year: selectedYear, order: selectedOrderCase, successfulState: selectedSuccessCase))
                 
