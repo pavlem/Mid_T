@@ -41,7 +41,12 @@ struct ContentView: View {
                 Button(filterTitle) {
                     self.showModal = true
                 }.sheet(isPresented: self.$showModal) {
+                    
+                    
+
                     print("sssssssss") // TODO: - Remove this
+                    
+                    
                 } content: {
                     FilterView(launchesVM: launchesVM)
                 }
@@ -55,35 +60,32 @@ struct FilterView: View {
     @ObservedObject var launchesVM: LaunchesVM
     @Environment(\.presentationMode) var presentationMode
     
-    @State var selectedYear = "None selected"
+    @State var selectedYear = "None"
     @State var selectedSuccessCase = "All"
     @State var selectedOrderCase = "ASC"
-    
-    
-    
-    
-
     
     var body: some View {
         
         VStack {
-            YearPickerView(selectedYear: $selectedYear, years: launchesVM.launchesByYear)
+            YearPickerView(selectedYear: $selectedYear, years: [selectedYear] + launchesVM.launchesByYear)
             LaunchSuccessView(selectedSuccessCase: $selectedSuccessCase)
             LaunchOrderView(selectedOrderCase: $selectedOrderCase)
             Spacer()
             VStack {
-                Button {
-                                        
-                    if let firstYear = launchesVM.launchesByYear.first {
-                        if Int(selectedYear) == nil {
-                            selectedYear = firstYear
-                        }
-                    }
-                    
-                    launchesVM.filter(filterObject: LaunchesFilterObject(year: selectedYear, order: selectedOrderCase, successfulState: selectedSuccessCase))
                 
+                Button {
                     
-//                    presentationMode.wrappedValue.dismiss()
+                    
+//                    if let firstYear = launchesVM.launchesByYear.first {
+//                        if Int(selectedYear) == nil {
+//                            selectedYear = firstYear
+//                        }
+//                    }
+                    
+                    
+                    launchesVM.resetFilters()
+                    launchesVM.filter(filterObject: LaunchesFilterObject(year: selectedYear, order: selectedOrderCase, successfulState: selectedSuccessCase))
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text(LaunchesVM.applyFiltersText)
                 }
@@ -96,8 +98,8 @@ struct FilterView: View {
                     print(selectedSuccessCase)
                     print(selectedOrderCase)
 
-//
-                    launchesVM.resetLaunches()
+
+                    launchesVM.resetFilters()
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text(LaunchesVM.resetFiltersText)

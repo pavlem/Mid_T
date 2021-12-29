@@ -7,12 +7,25 @@
 
 import Foundation
 
-
 struct LaunchesFilterObject {
+    
     let year: String
     let order: String
     let successfulState: String
     
+    var isSusccessfulLaunch: Bool? {
+        if successfulState == "Success only" {
+            return true
+        } else if successfulState == "Failure only" {
+            return false
+        }
+        return nil
+    }
+    
+    var isOrderAssceding: Bool {
+        if order == "ASC" { return true }
+        return false
+    }
 }
 
 class LaunchesVM: ObservableObject {
@@ -21,12 +34,28 @@ class LaunchesVM: ObservableObject {
     @Published var launchesInfoTitle = LaunchesVM.launchesLoadingText
     @Published var launches = [Launch]()
         
-    func resetLaunches() {
+    func resetFilters() {
         launches = originalLaunches
     }
     
     func filter(filterObject: LaunchesFilterObject) {
-        print(filterObject)
+        
+        // filtering by year
+        if let _ = Int(filterObject.year) {
+            launches = launches.filter { $0.launchYear == filterObject.year }
+        }
+        
+        // filtering by successful launch
+        if let isSuccessLaunchSeleceted = filterObject.isSusccessfulLaunch {
+            launches = launches.filter {$0.launchSuccess == isSuccessLaunchSeleceted }
+        }
+        
+        // filtering by order (ascending or descending)
+        if filterObject.isOrderAssceding {
+            launches = launches.sorted(by: { $0.launchYear < $1.launchYear })
+        } else {
+            launches = launches.sorted(by: { $0.launchYear > $1.launchYear })
+        }
     }
 
     static var launchesLoadingText = "LAUNCHES - Loading..."
@@ -35,7 +64,7 @@ class LaunchesVM: ObservableObject {
     static var resetFiltersText = "Reset filters"
     
     var launchesByYear: [String] {
-        let years = launches.map { $0.launchYear }
+        let years = originalLaunches.map { $0.launchYear }
         let yearsFiltered = [String](Set(years.map {$0})).sorted()
         return yearsFiltered
     }
