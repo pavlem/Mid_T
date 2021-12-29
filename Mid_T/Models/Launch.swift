@@ -18,6 +18,7 @@ struct Launch: Decodable, Identifiable {
     let launchSuccess: Bool?
     let launchFailureDetails: LaunchFailureDetails?
     let details: String?
+    let launchYear: String
 }
 
 struct Links: Decodable {

@@ -7,14 +7,38 @@
 
 import Foundation
 
+
+struct LaunchesFilterObject {
+    let year: String
+    let order: String
+    let successfulState: String
+    
+}
+
 class LaunchesVM: ObservableObject {
     
     // MARK: - API
-    @Published var launchesInfoTitle = LaunchesVM.launchesLoading
+    @Published var launchesInfoTitle = LaunchesVM.launchesLoadingText
     @Published var launches = [Launch]()
+        
+    func resetLaunches() {
+        launches = originalLaunches
+    }
     
-    static var launchesLoading = "LAUNCHES - Loading..."
-    static var launchesLoadingDone = "LAUNCHES"
+    func filter(filterObject: LaunchesFilterObject) {
+        print(filterObject)
+    }
+
+    static var launchesLoadingText = "LAUNCHES - Loading..."
+    static var launchesLoadingDoneText = "LAUNCHES"
+    static var applyFiltersText = "Apply filters"
+    static var resetFiltersText = "Reset filters"
+    
+    var launchesByYear: [String] {
+        let years = launches.map { $0.launchYear }
+        let yearsFiltered = [String](Set(years.map {$0})).sorted()
+        return yearsFiltered
+    }
     
     // MARK: - Inits
     init() {
@@ -24,12 +48,13 @@ class LaunchesVM: ObservableObject {
                 if let launches = launches {
                     DispatchQueue.main.async {
                         self.launches = launches
-                        self.launchesInfoTitle = LaunchesVM.launchesLoadingDone
+                        self.originalLaunches = launches
+                        self.launchesInfoTitle = LaunchesVM.launchesLoadingDoneText
                     }
                 }
             case .failure(let error):
                 print(error)
-                // handle error
+                // TODO: - handle error
             }
         }
     }
@@ -39,6 +64,7 @@ class LaunchesVM: ObservableObject {
     }
     
     // MARK: - Properties
+    private var originalLaunches = [Launch]()
     private var dataTask: URLSessionDataTask?
     private let networkService = SpacexService()
 }

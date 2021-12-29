@@ -10,8 +10,6 @@ import UIKit
 
 struct LaunchVM {
     
-//    launchDateUnix: 1217734440, launchDateUtc: "2008-08-03T03:34:00.000Z", launchDateLocal: "2008-08-03T15:34:00+12:00",  links: Mid_T.Links(missionPatchSmall: Optional("https://images2.imgbox.com/3d/86/cnu0pan8_o.png")),)
-    
     let launch: Launch
     
     var missionImagePatchUrl: String {
@@ -26,7 +24,7 @@ struct LaunchVM {
         return launch.missionName
     }
     
-    var launchDate: Date {
+    private var launchDate: Date {
         return Date(timeIntervalSince1970: Double(launch.launchDateUnix))
     }
     
