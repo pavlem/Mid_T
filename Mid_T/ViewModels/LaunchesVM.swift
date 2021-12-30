@@ -35,6 +35,7 @@ class LaunchesVM: ObservableObject {
     // MARK: - API
     @Published var launchesInfoTitle = LaunchesVM.launchesLoadingText
     @Published var launches = [Launch]()
+    @Published var isLoading = true
         
     func resetFilters() {
         launches = originalLaunches
@@ -81,11 +82,14 @@ class LaunchesVM: ObservableObject {
                         self.launches = launches
                         self.originalLaunches = launches
                         self.launchesInfoTitle = LaunchesVM.launchesLoadingDoneText
+                        self.isLoading = false
                     }
                 }
-            case .failure(let error):
-                print(error)
+            case .failure(_):
                 // TODO: - handle error
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
             }
         }
     }

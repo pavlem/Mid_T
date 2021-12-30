@@ -17,38 +17,42 @@ struct LaunchesMainView: View {
     private let filterTitle = "Filter"
     
     var body: some View {
-        NavigationView {
-            VStack() {
-                Text(companyVM.companyInfoTitle)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(Font.title)
-                    .padding()
-                Text(companyVM.companyInfo)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.body)
-                    .padding()
-                Spacer()
-                Text(launchesVM.launchesInfoTitle)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(Font.title)
-                    .padding()
-                List(launchesVM.launches) { launch in
-                    LaunchCell(viewModel: LaunchVM(launch: launch))
+        LoadingView(isShowing: $launchesVM.isLoading) {
+            NavigationView {
+                VStack() {
+                    LaunchesMainViewText(text: companyVM.companyInfoTitle, font: .title)
+                    LaunchesMainViewText(text: companyVM.companyInfo, font: .body)
+                    Spacer()
+                    LaunchesMainViewText(text: launchesVM.launchesInfoTitle, font: .title)
+                    List(launchesVM.launches) { launch in
+                        LaunchCell(viewModel: LaunchVM(launch: launch))
+                    }
                 }
-            }
-            .navigationTitle(companyTitle)
-            .toolbar {
-                Button(filterTitle) {
-                    self.showModal = true
-                }.sheet(isPresented: self.$showModal) {
-                } content: {
-                    FilterView(launchesVM: launchesVM)
+                .navigationTitle(companyTitle)
+                .toolbar {
+                    Button(filterTitle) {
+                        self.showModal = true
+                    }.sheet(isPresented: self.$showModal) {
+                    } content: {
+                        FilterView(launchesVM: launchesVM)
+                    }
                 }
-            }
-        }.navigationViewStyle(StackNavigationViewStyle())
+            }.navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
 
-
+struct LaunchesMainViewText: View {
+    
+    let text: String
+    var font: Font
+    
+    var body: some View {
+        Text(text)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .font(font)
+            .padding()
+    }
+}
 
 

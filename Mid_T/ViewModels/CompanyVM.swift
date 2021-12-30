@@ -32,6 +32,7 @@ class CompanyVM: ObservableObject {
                 print(error)
                 // handle error
             }
+            
         }
     }
     

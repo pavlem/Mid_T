@@ -19,7 +19,6 @@
 		2BAC45C62774E9C60004C2B9 /* Mid_TApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC45C52774E9C60004C2B9 /* Mid_TApp.swift */; };
 		2BAC45C82774E9C60004C2B9 /* LaunchesMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC45C72774E9C60004C2B9 /* LaunchesMainView.swift */; };
 		2BAC45CA2774E9C80004C2B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC45C92774E9C80004C2B9 /* Assets.xcassets */; };
-		2BAC45CD2774E9C80004C2B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC45CC2774E9C80004C2B9 /* Preview Assets.xcassets */; };
 		2BAC45D72774E9C80004C2B9 /* Mid_TTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC45D62774E9C80004C2B9 /* Mid_TTests.swift */; };
 		2BAC45F12774EAD40004C2B9 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC45F02774EAD40004C2B9 /* Launch.swift */; };
 		2BAC45F42774ECA50004C2B9 /* LaunchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC45F32774ECA50004C2B9 /* LaunchCell.swift */; };
@@ -29,6 +28,7 @@
 		2BE77AA0277DA18900254556 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE77A9F277DA18900254556 /* FilterView.swift */; };
 		2BE77AA2277DB00C00254556 /* LaunchPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE77AA1277DB00C00254556 /* LaunchPickerView.swift */; };
 		2BE77AA4277DB02500254556 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE77AA3277DB02500254556 /* YearPickerView.swift */; };
+		2BE77AA7277DB4C300254556 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE77AA6277DB4C300254556 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,6 @@
 		2BAC45C52774E9C60004C2B9 /* Mid_TApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mid_TApp.swift; sourceTree = "<group>"; };
 		2BAC45C72774E9C60004C2B9 /* LaunchesMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesMainView.swift; sourceTree = "<group>"; };
 		2BAC45C92774E9C80004C2B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2BAC45CC2774E9C80004C2B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2BAC45D22774E9C80004C2B9 /* Mid_TTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mid_TTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAC45D62774E9C80004C2B9 /* Mid_TTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mid_TTests.swift; sourceTree = "<group>"; };
 		2BAC45F02774EAD40004C2B9 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		2BE77A9F277DA18900254556 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		2BE77AA1277DB00C00254556 /* LaunchPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPickerView.swift; sourceTree = "<group>"; };
 		2BE77AA3277DB02500254556 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
+		2BE77AA6277DB4C300254556 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,23 +136,14 @@
 		2BAC45C42774E9C60004C2B9 /* Mid_T */ = {
 			isa = PBXGroup;
 			children = (
+				2BE77AA5277DB48B00254556 /* App */,
 				2BAC45EF2774EAB10004C2B9 /* Models */,
 				2BAC45F22774EC700004C2B9 /* Views */,
 				2BAC45F727751FFF0004C2B9 /* ViewModels */,
 				2B3F3FDE277A13C700747266 /* Libs */,
 				2B3F3FE1277A156C00747266 /* Resources */,
-				2BAC45C52774E9C60004C2B9 /* Mid_TApp.swift */,
-				2BAC45CB2774E9C80004C2B9 /* Preview Content */,
 			);
 			path = Mid_T;
-			sourceTree = "<group>";
-		};
-		2BAC45CB2774E9C80004C2B9 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				2BAC45CC2774E9C80004C2B9 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		2BAC45D52774E9C80004C2B9 /* Mid_TTests */ = {
@@ -176,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				2BAC45C72774E9C60004C2B9 /* LaunchesMainView.swift */,
+				2BE77AA6277DB4C300254556 /* LoadingView.swift */,
 				2BE77AA1277DB00C00254556 /* LaunchPickerView.swift */,
 				2BE77AA3277DB02500254556 /* YearPickerView.swift */,
 				2BE77A9F277DA18900254556 /* FilterView.swift */,
@@ -194,6 +186,14 @@
 				2BAC45FA277520490004C2B9 /* LaunchesVM.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2BE77AA5277DB48B00254556 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2BAC45C52774E9C60004C2B9 /* Mid_TApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,7 +277,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BAC45CD2774E9C80004C2B9 /* Preview Assets.xcassets in Resources */,
 				2BAC45CA2774E9C80004C2B9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +308,7 @@
 				2BAC45C62774E9C60004C2B9 /* Mid_TApp.swift in Sources */,
 				2BE77AA0277DA18900254556 /* FilterView.swift in Sources */,
 				2BAC45FB277520490004C2B9 /* LaunchesVM.swift in Sources */,
+				2BE77AA7277DB4C300254556 /* LoadingView.swift in Sources */,
 				2B3FEA17277926AE008FEDA1 /* NetworkError.swift in Sources */,
 				2BE77AA2277DB00C00254556 /* LaunchPickerView.swift in Sources */,
 				2B3F3FE3277B0E0900747266 /* LaunchDetail.swift in Sources */,
@@ -460,7 +460,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Mid_T/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G5ZMJZYMZX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -490,7 +490,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Mid_T/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G5ZMJZYMZX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
