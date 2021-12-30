@@ -49,62 +49,6 @@ struct LaunchesMainView: View {
     }
 }
 
-struct YearPickerView: View {
 
-    // MARK: - API
-    @Binding var selectedYear: String
-    var years: [String]
-    
-    // MARK: - Properties
-    private let selectAYearText = "Select a year: "
-    private let chooseAYearText = "Please choose a year"
-    
-    var body: some View {
-        HStack {
-            Text(selectAYearText)
-            Spacer()
-            Picker(chooseAYearText, selection: $selectedYear) {
-                ForEach(years, id: \.self) {
-                    Text($0)
-                }
-            }
-        }
-        .padding()
-    }
-}
 
-struct LaunchSuccessView: View {
-    
-    // MARK: - API
-    @Binding var selectedSuccessCase: String
-    
-    // MARK: - Properties
-    private let pickerText = "Please choose a year"
-    private let order = ["All", "Success", "Failure"]
-    
-    var body: some View {
-        VStack {
-            Picker(pickerText, selection: $selectedSuccessCase) { ForEach(order, id: \.self) { Text($0) } }
-            .pickerStyle(.segmented)
-            .padding()
-        }
-    }
-}
 
-struct LaunchOrderView: View {
-    
-    // MARK: - API
-    @Binding var selectedOrderCase: String
-    
-    // MARK: - Properties
-    private let pickerText = "Please choose a year"
-    private let order = ["ASC", "DESC"]
-    
-    var body: some View {
-        VStack {
-            Picker(pickerText, selection: $selectedOrderCase) { ForEach(order, id: \.self) { Text($0) } }
-            .pickerStyle(.segmented)
-            .padding()
-        }
-    }
-}

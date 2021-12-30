@@ -34,6 +34,8 @@ struct FilterView: View {
     private let orederingByYear = "Select ordering by year"
     private let successfulState = "Success"
     private let failureStateText = "Failure"
+    private let successOptions = ["All", "Success", "Failure"]
+    private let ascendingOptions = ["ASC", "DESC"]
 
     var body: some View {
         
@@ -43,9 +45,9 @@ struct FilterView: View {
                 .padding()
             YearPickerView(selectedYear: $selectedYear, years: [selectedYear] + launchesVM.launchesByYear)
             FilterViewTitle(title: launchOutcome)
-            LaunchSuccessView(selectedSuccessCase: $selectedSuccessCase)
+            LaunchPickerView(selectedCase: $selectedSuccessCase, order: successOptions)
             FilterViewTitle(title: orederingByYear)
-            LaunchOrderView(selectedOrderCase: $selectedOrderCase)
+            LaunchPickerView(selectedCase: $selectedOrderCase, order: ascendingOptions)
             Spacer()
             VStack {
                 Button {

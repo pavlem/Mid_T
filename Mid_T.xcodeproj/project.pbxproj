@@ -27,6 +27,8 @@
 		2BAC45F9277520180004C2B9 /* CompanyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC45F8277520180004C2B9 /* CompanyVM.swift */; };
 		2BAC45FB277520490004C2B9 /* LaunchesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC45FA277520490004C2B9 /* LaunchesVM.swift */; };
 		2BE77AA0277DA18900254556 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE77A9F277DA18900254556 /* FilterView.swift */; };
+		2BE77AA2277DB00C00254556 /* LaunchPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE77AA1277DB00C00254556 /* LaunchPickerView.swift */; };
+		2BE77AA4277DB02500254556 /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE77AA3277DB02500254556 /* YearPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		2BAC45F8277520180004C2B9 /* CompanyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyVM.swift; sourceTree = "<group>"; };
 		2BAC45FA277520490004C2B9 /* LaunchesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesVM.swift; sourceTree = "<group>"; };
 		2BE77A9F277DA18900254556 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		2BE77AA1277DB00C00254556 /* LaunchPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPickerView.swift; sourceTree = "<group>"; };
+		2BE77AA3277DB02500254556 /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				2BAC45C72774E9C60004C2B9 /* LaunchesMainView.swift */,
+				2BE77AA1277DB00C00254556 /* LaunchPickerView.swift */,
+				2BE77AA3277DB02500254556 /* YearPickerView.swift */,
 				2BE77A9F277DA18900254556 /* FilterView.swift */,
 				2BAC45F32774ECA50004C2B9 /* LaunchCell.swift */,
 				2B3F3FE2277B0E0900747266 /* LaunchDetail.swift */,
@@ -299,10 +305,12 @@
 				2B3FEA1527792553008FEDA1 /* NetworkService.swift in Sources */,
 				2BAC45F627751FF60004C2B9 /* Company.swift in Sources */,
 				2BAC45F9277520180004C2B9 /* CompanyVM.swift in Sources */,
+				2BE77AA4277DB02500254556 /* YearPickerView.swift in Sources */,
 				2BAC45C62774E9C60004C2B9 /* Mid_TApp.swift in Sources */,
 				2BE77AA0277DA18900254556 /* FilterView.swift in Sources */,
 				2BAC45FB277520490004C2B9 /* LaunchesVM.swift in Sources */,
 				2B3FEA17277926AE008FEDA1 /* NetworkError.swift in Sources */,
+				2BE77AA2277DB00C00254556 /* LaunchPickerView.swift in Sources */,
 				2B3F3FE3277B0E0900747266 /* LaunchDetail.swift in Sources */,
 				2B3F3FE0277A13DA00747266 /* CachedAsyncImage.swift in Sources */,
 				2B3F3FE5277B13AC00747266 /* String+Extension.swift in Sources */,
